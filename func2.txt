@@ -1,0 +1,138 @@
+import org.w3c.dom.ls.LSOutput;
+import java.util.Scanner;
+public class assign3_14 {
+    static void vote(int age){
+        if(age>=18)
+            System.out.println("He/She is eligible for vote.");
+        else
+            System.out.println("He/She is not eligible for vote.");
+    }
+    static void add(int x, int y){
+        System.out.println("The sum of numbers: "+(x+y));
+    }
+    static void prod(int x,int y){
+        System.out.println("The product of numbers: "+(x*y));
+    }
+    static void circum_area(float rad){
+        System.out.println("The circumference of circle: "+(2*3.14*rad));
+        System.out.println("The area of circle: "+ (3.14*rad*rad));
+    }
+    static void prime(int x){
+        int flag = 0;
+        for(int i=2;i<x/2;i++){
+            if(x%i==0){
+                System.out.println(x+ " is not a prime number");
+                flag = 1;
+                break;
+            }
+        }
+        if(flag==0)
+            System.out.println(x+" is a prime numeber");
+    }
+    static void grade_teller(int marks) {
+        if (marks <= 100) {
+            if (marks > 90 && marks <= 100)
+                System.out.println("Grade: AA");
+            else if (marks > 80 && marks <= 90)
+                System.out.println("Grade: AB");
+            else if (marks > 70 && marks <= 80)
+                System.out.println("Grade: BB");
+            else if (marks > 60 && marks <= 70)
+                System.out.println("Grade: BC");
+            else if (marks > 50 && marks <= 60)
+                System.out.println("Grade: CD");
+            else if (marks > 40 && marks <= 50)
+                System.out.println("Grade: DD");
+            else
+                System.out.println("FAIL");
+        }
+        else
+            System.out.println("invalid marks");
+    }
+    static void factorial(int x){
+        if(x<0)
+            System.out.println("The factorial of negative number is not possible");
+        else{
+            int fact = 1;
+            for(int i=1;i<=x;i++){
+                fact*=i;
+            }
+            System.out.println("The factorial of number: "+fact);
+        }
+    }
+    static int pow(int a, int b){
+        int power=1;
+        for(int i=1;i<=b;i++){
+            power*=a;
+        }
+        return power;
+    }
+    static void palindrome(int x){
+        if(x%10!=0){
+        int temp=x;
+        int rev=0;
+        int rem;
+        int count=0;
+        while(temp>0){
+            rem=temp%10;
+            temp/=10;
+            rev+=rem*(pow(10, count));
+            count++;
+        }
+        if(rev==x)
+            System.out.println("PALINDROME NUMBER");
+        else
+            System.out.println("NOT A PALINDROME NUMBER");
+        }
+        else
+            System.out.println("NOT A PALINDROME NUMBER");
+    }
+
+    static void pythagoras(int h, int p, int b){
+        if((h*h)==(p*p + b*b) )
+            System.out.println("pythagorean triplet");
+        else
+            System.out.println("not a pythagorean triplet");
+    }
+    static void prime_btw(int a,int b){
+        for(int i=a;i<=b;i++){
+            for(int j = 2;j<i/2;j++){
+                if(i%j==0){
+                    System.out.println(i);
+                    break;
+                }
+            }
+        }
+    }
+    static void sum_till(int n){
+        int sum=0;
+        for(int i=1;i<=n;i++){
+            sum+=i;
+        }
+        System.out.println("the sum of "+n+" natural numbers: "+sum);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int age = sc.nextInt();
+        vote(age);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        add(a,b);
+        prod(a,b);
+        float radius = sc.nextFloat();
+        circum_area(radius);
+        prime(a);
+        prime(b);
+        int m = sc.nextInt();
+        grade_teller(m);
+        factorial(b);
+        int num = sc.nextInt();
+        palindrome(num);
+        int hypo = sc.nextInt();
+        int base = sc.nextInt();
+        int per = sc.nextInt();
+        pythagoras(hypo,per,base);
+        prime_btw(a,b);
+        sum_till(num);
+    }
+}
