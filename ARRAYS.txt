@@ -1,0 +1,96 @@
+                                                      ARRAYS: Build Array from Permutation
+
+Given a zero-based permutation nums (0-indexed), build an array ans of the same length where ans[i] = nums[nums[i]] for each 0 <= i < nums.length and return it.
+
+A zero-based permutation nums is an array of distinct integers from 0 to nums.length - 1 (inclusive).
+
+ SOLUTION:
+class Solution {
+    public int[] buildArray(int[] nums) {
+        int [] ans = new int [nums.length];
+        for(int i=0;i<nums.length;i++){
+            ans[i] = nums[nums[i]];
+        }
+        return ans;
+    }
+}
+
+						ARRAYS: Concatenation of Array
+Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed).
+
+Specifically, ans is the concatenation of two nums arrays.
+
+Return the array ans
+
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int [] ans = new int[2*nums.length];
+        for(int i = 0;i<nums.length;i++){
+            ans[i]=nums[i];
+            ans[nums.length+i] = nums[i];
+        }
+        return ans;
+    }
+}
+
+						ARRAYS:Running Sum of 1d Array
+Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+
+Return the running sum of nums.
+
+class Solution {
+    public int[] runningSum(int[] nums) {
+        int [] runsum = new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            int sum = 0;
+            for(int j=0;j<=i;j++){
+                sum+=nums[j];
+            }
+            runsum[i]=sum;
+            sum=0;
+        }
+        return runsum;
+    }
+}
+
+						ARRAYS: Richest Customer Wealth
+You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+
+A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int[] sums = new int[accounts.length];
+        for(int i=0;i<accounts.length;i++){
+            int sum = 0;
+            for(int num:accounts[i]){
+                sum+=num;
+            }
+            sums[i]=sum;
+        }
+        int max = sums[0];
+        for(int i=0;i<sums.length;i++){
+            if(sums[i]>max)
+                max = sums[i];
+        }
+        return max;
+    }
+}
+
+						ARRAYS: Shuffle the Array
+Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+
+Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int [] ans = new int[nums.length];
+        int j = 0;
+        for(int i=0;i<n;i++){
+            ans[j]=nums[i];
+            ans[j+1]=nums[n+i];
+            j+=2;
+        }
+        return ans;
+    }
+}
