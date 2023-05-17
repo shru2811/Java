@@ -94,3 +94,80 @@ class Solution {
         return ans;
     }
 }
+
+						Arrays:Kids With the Greatest Number of Candies
+There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.
+
+Return a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.
+
+Note that multiple kids can have the greatest number of candies.
+
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        ArrayList<Boolean> ans = new ArrayList<Boolean>();
+        int max = candies[0];
+    for(int i=0 ; i<candies.length ; i++){
+        if(max<candies[i])
+            max = candies[i];
+    }
+    for(int j=0; j<candies.length;j++){
+        if(candies[j]+extraCandies>=max)
+            ans.add(true);
+        else
+            ans.add(false);
+    }
+    return ans;
+    }
+}
+
+						ARRAYS: Number of Good Pairs
+Given an array of integers nums, return the number of good pairs.
+
+A pair (i, j) is called good if nums[i] == nums[j] and i < j.
+
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int count = 0;
+        for(int i=0;i<nums.length-1;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]==nums[j] && i<j){
+                    count+=1;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+						ARRAYS: How Many Numbers Are Smaller Than the Current Number
+
+Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i].
+
+Return the answer in an array.
+
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] ans = new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            int count=0;
+            for(int j=0;j<nums.length;j++){
+                if(nums[i]>nums[j]){
+                    count++;
+                }
+            }
+            ans[i]=count;
+        }
+        return ans;
+    }
+}
+
+					ARRAYS: Create Target Array in the Given Order
+Given two arrays of integers nums and index. Your task is to create target array under the following rules:
+
+Initially target array is empty.
+From left to right read nums[i] and index[i], insert at index index[i] the value nums[i] in target array.
+Repeat the previous step until there are no elements to read in nums and index.
+Return the target array.
+
+It is guaranteed that the insertion operations will be valid.
+
