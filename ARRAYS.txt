@@ -171,3 +171,19 @@ Return the target array.
 
 It is guaranteed that the insertion operations will be valid.
 
+class Solution {
+    public int[] createTargetArray(int[] nums, int[] index) {
+        int[] target = new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            target[i]=nums[i];
+            int j=i;
+            while(target[index[i]]!=nums[i]){
+                int temp = target[j];
+                target[j]=target[j-1];
+                target[j-1]=temp;
+                j--;
+            }
+        }
+        return target;
+    }
+}
